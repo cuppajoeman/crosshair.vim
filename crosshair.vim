@@ -33,6 +33,7 @@ function s:get_size_of_top()
 	" we need to subtract one
 	let current_line_number = line(".")
 	" subtract 1 because the statusbar of that buffer takes one line
+	echo max([0, window_height_cols/2 - current_line_number - 1])
 	return max([0, window_height_cols/2 - current_line_number - 1])
 endfunction
 

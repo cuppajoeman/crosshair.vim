@@ -1,6 +1,9 @@
 " Vim global plugin keeping the cursor vertically and horizontally centered
 " Last Change:	2023 Nov 7
 " Maintainer:	cuppajoeman <ccn@cuppajoeman.com>
+"
+" very
+" longgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
 
 if exists("g:loaded_crosshair")
 	finish
@@ -13,6 +16,8 @@ function s:set_custom_options()
 	set virtualedit=all
 	set nowrap
 	let &scrolloff=winheight(win_getid())/2
+	let &sidescrolloff=999
+	"let &sidescrolloff=winwidth(win_getid())/2
 endfunction
 
 function s:prepare_centering_buffers()
@@ -62,7 +67,7 @@ endfunction
 function s:adjust_horizontal_margins()
 	" TODO do without movement
 	let window_width_cols = &columns
-	let left_margin_width = window_width_cols/2 - virtcol(".")
+	let left_margin_width = max([0,window_width_cols/2 - virtcol(".")])
 
 	wincmd h
 	:execute "vertical resize " .. left_margin_width
